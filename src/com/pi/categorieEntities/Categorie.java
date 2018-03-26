@@ -48,4 +48,8 @@ public Categorie(){
     public String toString() {
         return "Categorie{" + "id=" + id + ", nom=" + nom +'}';
     }
+public void PromptUser(){
+    
+}
+
 }
