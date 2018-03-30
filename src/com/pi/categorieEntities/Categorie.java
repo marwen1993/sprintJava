@@ -10,20 +10,18 @@ package com.pi.categorieEntities;
  * @author chevc
  */
 public class Categorie {
-    public int id ;
-    public String nom;
     
+    public int id ;
+    public int idCategorie;
+    public String nom;
 
-    public Categorie(int id, String nom, String prenom) {
-        this.id = id;
+    public Categorie(int idCategorie, String nom) {
+      
+        this.idCategorie = idCategorie;
         this.nom = nom;
     }
-public Categorie(){
-    
-}
-    public Categorie(String nom, String prenom) {
-        this.nom = nom;
-        
+
+    public Categorie() {
     }
 
     public int getId() {
@@ -34,6 +32,14 @@ public Categorie(){
         this.id = id;
     }
 
+    public int getIdCategorie() {
+        return idCategorie;
+    }
+
+    public void setIdCategorie(int idCategorie) {
+        this.idCategorie = idCategorie;
+    }
+
     public String getNom() {
         return nom;
     }
@@ -42,14 +48,16 @@ public Categorie(){
         this.nom = nom;
     }
 
-    
-
     @Override
     public String toString() {
-        return "Categorie{" + "id=" + id + ", nom=" + nom +'}';
+        return "Categorie{" + "id=" + id + ", idCategorie=" + idCategorie + ", nom=" + nom + '}';
     }
+    
+    
+    
+
+
 public void PromptUser(){
     
 }
-
 }

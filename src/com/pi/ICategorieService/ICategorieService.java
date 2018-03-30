@@ -15,10 +15,11 @@ import java.util.List;
 public interface ICategorieService {
     public void createCategorie(Categorie c);
 
-    public List<Categorie> getAll();
-
+  public List<Categorie> getAll();}
+/*
     public void update(Categorie c);
 
     public void delete(int id);
     
 }
+*/
