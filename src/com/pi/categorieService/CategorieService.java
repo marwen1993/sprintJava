@@ -7,6 +7,7 @@ package com.pi.categorieService;
 
 import com.pi.ICategorieService.ICategorieService;
 import com.pi.categorieEntities.Categorie;
+import com.pi.categorieEntities.CategorieParent;
 import com.pi.connection.data;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -37,15 +38,21 @@ public class CategorieService implements ICategorieService {
     
   
     public void createCategorie(Categorie c) {
+        
+            String sql = "INSERT INTO  categorieproduit(id_categorie,nom) VALUES(?,?)";     
         try {
-            String req = "INSERT INTO categorieproduit (id_categorie,nom) VALUES (?,?)";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            
+                      
 
-            PreparedStatement st = conn.prepareStatement(req);
-            st.setInt(1, c.getIdCategorie());
-            st.setString(2, c.getNom());
-            st.executeUpdate();
+            stmt.setInt(1,c.getId());
+            stmt.setString(2,c.getNom());
+            
+            stmt.execute();
+            
         } catch (SQLException ex) {
-            Logger.getLogger(CategorieService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ICategorieService.class.getName()).log(Level.SEVERE, null, ex);
+           
         }
     }
 
@@ -53,14 +60,20 @@ public class CategorieService implements ICategorieService {
 
 
  
-public List<Categorie> getAll() {
-        ArrayList<Categorie> listCategorie = new ArrayList<>();
+
+    public List<Categorie> getAll() {
+    ArrayList<Categorie> listCategorie = new ArrayList<>();
+       
+    
         try {
             stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("Select * from categorieproduit");
             while (rs.next()) {
+                CategorieParent Categorie_parent = new CategorieParent();
+                Categorie Categorie = new Categorie();
+                
                 System.out.println(rs.getInt(2) + " (" + rs.getString(3) + ")");
-                listCategorie.add(new Categorie(rs.getInt(2),
+                listCategorie.add(new Categorie(rs.getInt(1),
                         
                         rs.getString(3)) );
             }
@@ -74,19 +87,21 @@ public List<Categorie> getAll() {
 
 
     public void update(Categorie c) {
+        String sql = "UPDATE  categorieproduit SET id=?, id_categorie=?, nom=?,  WHERE id=?";
         try {
-            String req = "UPDATE `categorieproduit` SET `nom` = ? WHERE `id_categorie` = ?";
-            PreparedStatement st = conn.prepareStatement(req);
-            st.setInt(1, c.getIdCategorie());
-            st.setString(2, c.getNom());
-
-            st.executeUpdate();
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1,c.getCategorie_parent().getIdP());
+            stmt.setString(2,c.getNom());
+            
+            stmt.execute();
+            
         } catch (SQLException ex) {
-            Logger.getLogger(CategorieService.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            Logger.getLogger(ICategorieService.class.getName()).log(Level.SEVERE, null, ex);
+           
+        }   
     }
 
-   /*
+   
     public void delete(int id) {
         try {
             String req = "DELETE FROM `categorieproduit` WHERE `categorie`.`id` = ? ";
@@ -98,11 +113,14 @@ public List<Categorie> getAll() {
         }
     }
 
+   
     
 
     
 
     
+
     
-*/
+    
+
 }

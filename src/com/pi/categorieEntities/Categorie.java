@@ -12,14 +12,21 @@ package com.pi.categorieEntities;
 public class Categorie {
     
     public int id ;
-    public int idCategorie;
+    private CategorieParent categorie_parent;
     public String nom;
 
-    public Categorie(int idCategorie, String nom) {
+    public Categorie(int id, String nom) {
       
-        this.idCategorie = idCategorie;
+        this.id=id;
         this.nom = nom;
     }
+
+    public CategorieParent getCategorie_parent() {
+        return categorie_parent;
+    }
+
+   
+    
 
     public Categorie() {
     }
@@ -32,13 +39,7 @@ public class Categorie {
         this.id = id;
     }
 
-    public int getIdCategorie() {
-        return idCategorie;
-    }
-
-    public void setIdCategorie(int idCategorie) {
-        this.idCategorie = idCategorie;
-    }
+    
 
     public String getNom() {
         return nom;
@@ -50,7 +51,7 @@ public class Categorie {
 
     @Override
     public String toString() {
-        return "Categorie{" + "id=" + id + ", idCategorie=" + idCategorie + ", nom=" + nom + '}';
+        return this.nom;
     }
     
     

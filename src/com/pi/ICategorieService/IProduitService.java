@@ -6,20 +6,19 @@
 package com.pi.ICategorieService;
 
 import com.pi.categorieEntities.Categorie;
-import com.pi.categorieEntities.CategorieParent;
+import com.pi.categorieEntities.produit;
 import java.util.List;
 
 /**
  *
  * @author chevc
  */
-public interface ICategorieService {
-    public void createCategorie(Categorie c);
+public interface IProduitService {
+    public void createProduit(produit p);
 
-  public List<Categorie> getAll();
+  public List<produit> getAll();
 
-    public void update(Categorie c);
+    public void update(produit p);
 
     public void delete(int id);
-    
 }
