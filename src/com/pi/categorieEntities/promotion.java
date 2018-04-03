@@ -91,6 +91,9 @@ public class promotion {
     public String toString() {
         return "promotion{" + "id=" + id + ", produit_id=" + produit_id + ", nom=" + nom + ", dateDebut=" + dateDebut + ", dateFin=" + dateFin + ", pourcentage=" + pourcentage + ", idUser=" + idUser + '}';
     }
+    public void PromptUser(){
+    
+}
     
     
 }
