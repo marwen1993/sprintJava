@@ -82,5 +82,8 @@ public class produit {
         return "produit{" + "id=" + id + ", idCategorie=" + idCategorie + ", idUser=" + idUser + ", nom=" + nom + ", prix=" + prix + ", visib=" + visib + '}';
     }
     
+    public void PromptUser(){
+    
+}
     
 }
